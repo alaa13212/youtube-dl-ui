@@ -1,6 +1,6 @@
 # محمل اليوتيوب Youtube Downloader
 
-حمل فيديوهات اليوتيوب عبر بعض الضغطات.
+حمل فيديوهات اليوتيوب عبر بعض الضغطات.  
 Download YouTube videos and playlists with a few clicks.
 
 ***This description is available in English at the end of the file***
@@ -10,21 +10,21 @@ Download YouTube videos and playlists with a few clicks.
 
 قبل البدء بالتثبيت يجب تثبيت الاعتماديات، ولهذا التطبيق اعتماديتين:
 
-- الاولي `youtube-dl` ويمكنك العثور عليها في مدير حزم توزيعتك
-- والثانية `node-webkit` ويمكن تحميلها من هنا  
+- ‫الاولى `youtube-dl` ويمكنك العثور عليها في مدير حزم توزيعتك‬
+- ‫والثانية `node-webkit` ويمكن تحميلها من هنا‬  
     [node-webkit][nw-dl]
 
 الآن بعد تثبيت الاعتماديات يمكنك تحمل التطبيق من هنا
-    [محمل اليوتيوب][ydu-dl]
+[محمل اليوتيوب][ydu-dl]
 
 ## المساهمة
 
-يمكنك المساهمة عبر عمل شوكة `Fork` للمشروع وتطويرها وإعادة ارسالها لنا.  
+‫يمكنك المساهمة عبر عمل شوكة `Fork` للمشروع وتطويرها وإعادة ارسالها لنا.‬  
 أو عن طريق تجريب البرنامج في مختلف الحالات وارسال [تقارير الاخطاء][issues].
 
 ## الرخصة
 
-هذا التطبيق تحت رخصة وقف العمومية لمزيد من التفاصيل شاهد ملف الرخصة `LICENSE` .
+‫هذا التطبيق تحت رخصة وقف العمومية لمزيد من التفاصيل شاهد ملف الرخصة `LICENSE` .‬
 
 ## سجل التغيير
 
@@ -62,10 +62,10 @@ This app under Waqf General Public License, Read more more `LICENSE` .
 
 - Download YouTube videos and playlists via url
 - Display progress bars, and resuming downloads
-- ٍSelect sava path
+- Select sava path
 
 
 
  [nw-dl]: http://www.mediafire.com/folder/3rncbhwgp5oin/node-webkit
  [ydu-dl]: http://www.mediafire.com/folder/at8pah96n31bs/youtube-dl-ui
- [issues]: /alaa13212/youtube-dl-ui/issues
+ [issues]: http://github.com/alaa13212/youtube-dl-ui/issues
