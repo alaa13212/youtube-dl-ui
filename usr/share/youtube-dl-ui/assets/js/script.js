@@ -28,16 +28,10 @@ $(document).ready(function (){
 		$('#stop').prop('disabled', false);
 		
 		url  = $('#url').val();
-		if (url === ''){
-			alert('هل أدخلت رابط؟؟');
-			return true;
-		}
 		path = $('#path-text').val() || home;
-		
 		dl   = spawn('youtube-dl', ['-t', url], { cwd : path }); 
 
 		dl.stdout.on('data', function(data) {
-			$(document.body).removeClass('work');
 			data = data.toString();
 			if ( /PL / .test(data) ) {
 				
@@ -46,13 +40,19 @@ $(document).ready(function (){
 					.append('<b>بدأ تحميل قائمة التشغيل:</b> ' + data.replace(/.*PL (.*):.*/, '$1') )
 					.appendTo($('#log'))
 					.slideDown();
-				
+					
+					consoleLog(data);
+					
 			} else if ( /has already been downloaded/ .test(data) ) {
+				
 				$('.tmpalert').clone()
 					.removeClass('tmpalert').addClass('alert-success')
 					.append('<b>مقطع الفيديو:</b> ' + data.replace(/has already been downloaded| |\[download\]/gi, '') + 'محمل بالفعل')
 					.appendTo($('#log'))
 					.slideDown();
+					
+					consoleLog(data);
+					
 			} else if ( /Destination: / .test(data) ) {
 				
 				if (typeof lastbar !== 'undefined'){
@@ -68,19 +68,32 @@ $(document).ready(function (){
 					.slideDown()
 					.children('.bar')
 					.append('<b>' + data.substr(25) + '</b>');
+					
 			} else if ( /\d+\.\d%/ .test(data) ) {
-				lastbar.width(data.match(/\d+\.\d%/)[0]);
-			} else if (/\S/.test(data)) {
-				$(document.body).addClass('work');
-			} else {
 				
+				lastbar.width(data.match(/\d+\.\d%/)[0]);
+				
+				var log = 'السرعة: ' + data.replace(/\n|.*at([^s]+\/s).*/g, '$1');
+				log    += ' ، الزمن المتبقي: ' + data.match(/\d\d:\d\d|--:--/)[0];
+				
+				consoleLog(log, 'rtl');
+				
+			} else {
+				consoleLog(data);
 			}
 			
 		});
 
 		dl.stderr.on('data', function(err) {
+			if (typeof dl === 'undefined') {
+				return true;
+			}
 			dl.kill('SIGSTOP');
 			var ans = confirm('حدث الخطأ التالي:\n' + err + '\nهل تريد الاستمرار');
+			
+			if (typeof dl === 'undefined') {
+				return true;
+			}
 			
 			if (ans){
 				dl.kill('SIGCONT');
@@ -96,15 +109,18 @@ $(document).ready(function (){
 			$('#stop').prop('disabled', true);
 			
 			if (typeof lastbar === 'undefined'){
-				alert('انتهى التنزيل');
+				alert('قطع التنزيل');
+				consoleLog( 'قطع التنزيل', 'rtl' );
 				return true;
 			}
 			if (code === 0) {
 				//alert('تم التحميل بنجاح');
 				lastbar.addClass('bar-success');
+				consoleLog( 'تم التحميل بنجاح', 'rtl' );
 			} else {
 				lastbar.addClass('bar-danger');
 				alert('التحميل توقف بشكل مفاجئ، قد يكون فشل الرجاء التأكد من سلامة الملفات');
+				consoleLog( 'التحميل توقف بشكل مفاجئ، قد يكون فشل الرجاء التأكد من سلامة الملفات', 'rtl' );
 			}
 			lastbar.parent('.progress').removeClass('active progress-striped work');
 		});
@@ -114,7 +130,9 @@ $(document).ready(function (){
 		$('#start').prop('disabled', false);
 		$('#stop').prop('disabled', true);
 		
-		dl.kill();
+		if (typeof dl !== 'undefined'){
+			dl.kill();
+		}
 	});
 	
 	
@@ -134,6 +152,15 @@ $(document).ready(function (){
 		$('#path').click();
 	});
 	
+	
+	function consoleLog(data, dir) {
+		dir = (typeof dir === 'undefined')? 'ltr' : dir;
+		
+		var p  = '<p' + ((dir === 'rtl')? ' class="rtl"':"") + '>',
+		    ep = '</p>';
+		    
+		$('#console').append( p + data + ep ).scrollTop($('#console')[0].scrollHeight);
+	}
 	
 	
 });

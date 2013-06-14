@@ -28,6 +28,11 @@ Download YouTube videos and playlists with a few clicks.
 
 ## سجل التغيير
 
+### 0.1.1 التجريبي
+
+(* - أيقونة جديدة من تصميم Abdelhadi Dyouri *)
+- عرض معلومات أكثر عن التحميل
+
 ### 0.1.0 التجريبي
 
 - إمكانية تحمل الفيدوهات وقوائم التشغيل عبر رابط يوتيوب
@@ -58,6 +63,12 @@ This app under Waqf General Public License, Read more more `LICENSE` .
 
 ## Chengelog
 
+### 0.1.1 Beta
+
+- New icon by  Abdelhadi Dyouri 
+- Display more info from `youtube-dl` output
+
+
 ### 0.1.0 Beta
 
 - Download YouTube videos and playlists via url
@@ -66,6 +77,6 @@ This app under Waqf General Public License, Read more more `LICENSE` .
 
 
 
- [nw-dl]: http://www.mediafire.com/folder/3rncbhwgp5oin/node-webkit
- [ydu-dl]: http://www.mediafire.com/folder/at8pah96n31bs/youtube-dl-ui
+ [nw-dl]: https://www.dropbox.com/sh/0m8ns5pekynkn00/zoOtXAFcOz
+ [ydu-dl]: https://www.dropbox.com/sh/im3ck4fknyqkh6p/Y-Q3R8ORpo
  [issues]: http://github.com/alaa13212/youtube-dl-ui/issues

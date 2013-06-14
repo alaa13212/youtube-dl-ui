@@ -17,6 +17,10 @@ body {
 	padding: 20px 0;
 }
 
+.rtl {
+	direction: rtl;
+}
+
 .ltr {
 	direction: ltr;
 }
@@ -38,6 +42,33 @@ body {
 	cursor: wait;
 }
 
+
+#console {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 3px 8px;
+	color: #F8F8F8;
+	background-color: #141414;
+	direction: ltr;
+	font-weight: bold;
+	height: 20px;
+	overflow-y: scroll;
+	
+	transition: 0.8s height;
+}
+
+#console:hover {
+	height: 180px;
+}
+
+
+
+#console p {
+	margin: 0;
+	display: block;
+}
 
 #work{
 	margin: 10px;
