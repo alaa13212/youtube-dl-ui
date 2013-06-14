@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Categories=Network;
+Exec=youtube-dl-ui
+Icon=youtube-dl-ui
+Terminal=false
+Name=محمل يوتيوب
+GenericName=محمل يوتيوب
+Comment=محمل يوتيوب
+Name[en]=Youtube Downloader
+GenericName[en]=Youtube Downloader
+Comment[en]=Youtube Downloader

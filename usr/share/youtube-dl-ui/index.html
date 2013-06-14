@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- 
+	index.html
+	ملف الوالجهة الرئيسي
+
+	youtube-dl-ui
+       
+	Created by Ali Mohammed Al-brrak on 2013-06-13.
+	Copyright 2013 Ali Mohammed Al-brrak. All rights reserved.
+-->
+<html dir="rtl" lang="ar">
+	<head>
+		<meta charset="UTF-8" />
+		<title>محمل اليوتيوب</title>
+		
+		<link rel="stylesheet" href="assets/css/bootstrap.css"/>
+		<link rel="stylesheet" href="assets/css/style.css" />
+	</head>
+	<body>
+		<div class="tmpalert alert" style="display: none;">
+			<button type="button" class="close" >&times;</button>
+			
+		</div>
+		
+		<form id="parm" class="row-fluid">
+			<input id="url" type="url" placeholder="الرابط" class="input-block-level ltr" />
+			
+			<input style="display: none;" id="path" type="file" nwdirectory />
+			<div class="input-append input-block-level">
+				<input dir="ltr" id="path-text" type="text" style="width: calc(100% - 55px);" />
+				<button id="path-btn" type="button" class="btn"><i class="icon-folder-open"></i></button>
+			</div>
+			
+			<button type="button" id="stop" class="btn btn-danger" disabled >إيقاف</button>
+			<button type="submit" id="start" class="btn btn-primary">تحميل</button>
+		</form>
+		
+		<div id="log"></div>
+		
+		
+		<!-- شريط التحميل يعرض وقت العمل -->
+		<div class="tmpprogress progress progress-striped active work" style="display: none;">
+			  <div class="bar" style="width: 0%;"></div>
+		</div>
+		
+		
+		<!-- جاقاسكربت للنهاية ليحمل البرنامج أسرع --> 
+		<script src="assets/js/jquery.js"></script>
+		<!-- <script src="assets/js/bootstrap.js"></script> -->
+		<script src="assets/js/script.js"></script>
+	</body>
+</html>

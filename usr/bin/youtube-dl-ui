@@ -1,0 +1,2 @@
+#!/bin/bash 
+/usr/bin/nw /usr/share/youtube-dl-ui

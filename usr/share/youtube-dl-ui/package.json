@@ -1,0 +1,20 @@
+{
+  "main": "index.html",
+  "name": "youtube-dl-ui",
+  "description": "واجهة مستخدم رسومية لبرنامج youtube-dl",
+  "version": "0.1.0",
+  "keywords": [ "youtube-dl", "GUI" ],
+  "window": {
+    "icon": "/usr/share/icons/hicolor/48x48/apps/youtube-dl-ui.png",
+    "toolbar": false,
+    "width": 900,
+    "height": 600,
+    "position": "mouse",
+    // "min_width": 900,
+    // "min_height": 600,
+    "as_desktop": false
+  },
+  "webkit": {
+    "plugin": true
+  }
+}
