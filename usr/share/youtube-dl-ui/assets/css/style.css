@@ -25,6 +25,16 @@ body {
 	direction: ltr;
 }
 
+
+#console::-webkit-scrollbar {
+	background: #141414;
+	width: 4px;
+	height: 4px;
+}
+#console::-webkit-scrollbar-thumb {
+	background: #555;
+}
+
 #parm{
 	margin: 0 20px 20px;
 	width: calc(100% - 40px);
@@ -55,7 +65,7 @@ body {
 	font-weight: bold;
 	height: 20px;
 	overflow-y: scroll;
-	
+	z-index: 100;
 	transition: 0.8s height;
 }
 
@@ -73,4 +83,8 @@ body {
 #work{
 	margin: 10px;
 	display: none;
+}
+
+.progress .bar {
+	text-shadow: 0 0px 3px #000;
 }

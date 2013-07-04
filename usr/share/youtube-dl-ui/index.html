@@ -1,55 +1,132 @@
 <!DOCTYPE html>
-<!-- 
-	index.html
-	ملف الوالجهة الرئيسي
+<!--
+index.html
+ملف الوالجهة الرئيسي
 
-	youtube-dl-ui
-       
-	Created by Ali Mohammed Al-brrak on 2013-06-13.
-	Copyright 2013 Ali Mohammed Al-brrak. All rights reserved.
+youtube-dl-ui
+
+Created by Ali Mohammed Al-brrak on 2013-06-13.
+Copyright 2013 Ali Mohammed Al-brrak. All rights reserved.
 -->
 <html dir="rtl" lang="ar">
 	<head>
 		<meta charset="UTF-8" />
 		<title>محمل اليوتيوب</title>
-		
+
 		<link rel="stylesheet" href="assets/css/bootstrap.css"/>
 		<link rel="stylesheet" href="assets/css/style.css" />
 	</head>
 	<body>
-		<div class="tmpalert alert" style="display: none;">
-			<button type="button" class="close" >&times;</button>
-			
-		</div>
-		
+
 		<form id="parm" class="row-fluid">
 			<input id="url" type="url" placeholder="الرابط" class="input-block-level ltr" required/>
-			
+
 			<input style="display: none;" id="path" type="file" nwdirectory />
 			<div class="input-append input-block-level">
 				<input dir="ltr" id="path-text" type="text" style="width: calc(100% - 55px);" />
-				<button id="path-btn" type="button" class="btn"><i class="icon-folder-open"></i></button>
+				<button id="path-btn" type="button" class="btn">
+					<i class="icon-folder-open"></i>
+				</button>
 			</div>
-			
-			<button type="button" id="stop" class="btn btn-danger" disabled >إيقاف</button>
-			<button type="submit" id="start" class="btn btn-primary">تحميل</button>
+			<button id="show-more" type="button" title="هل الإتصال بطيئ؟؟" class="btn">تحمل دقة خاصة</button>
+			<div class="more" style="display: none;">
+				<br />
+				<div class="alert alert-block alert-danger">
+					<button type="button" class="close" >
+						&times;
+					</button>
+					<b>ملاحظة:</b> لا توفر جميع الفيديوهات كافة الدقق والصيغ، لذلك سيبحث البرنامج عن أعلى دقة ثم التي تليها إذا لم تتواجد وهكذا
+				</div>
+				<div class="btn-toolbar">
+					<div id="format" class="btn-group" data-toggle="buttons-checkbox">
+						<button type="button" class="btn active" data-format="webm">
+							WebM
+						</button>
+						<button type="button" class="btn active" data-format="mp4">
+							MP4
+						</button>
+						<button type="button" class="btn active" data-format="flv">
+							FLV
+						</button>
+						<button type="button" class="btn" data-format="3gp">
+							3GP
+						</button>
+					</div>
+					<div id="size" class="btn-group" data-toggle="buttons-checkbox">
+						<button type="button" class="btn" data-size="3072p">
+							3072p
+						</button>
+						<button type="button" class="btn" data-size="1080p">
+							1080p
+						</button>
+						<button type="button" class="btn" data-size="720p">
+							720p
+						</button>
+						<button type="button" class="btn active" data-size="480p">
+							480p
+						</button>
+						<button type="button" class="btn active" data-size="360p">
+							360p
+						</button>
+						<button type="button" class="btn active" data-size="240p">
+							240p/270p
+						</button>
+						<button type="button" class="btn active" data-size="144p">
+							144p
+						</button>
+					</div>
+					<div class="btn-group">
+						<a class="btn" href="http://en.wikipedia.org/wiki/YouTube#Quality_and_codecs" target="_blank"><i class="icon-info-sign"></i></a>
+					</div>
+				</div>
+			</div>
+			<button type="button" id="stop" class="btn btn-danger" disabled >
+				إيقاف
+			</button>
+			<button type="submit" id="start" class="btn btn-primary">
+				تحميل
+			</button>
+			<button id="test" type="button" class="btn btn-inverse">اسحب وافلت</button>
 		</form>
-		
 		<div id="log"></div>
-		
-		
+
 		<div id="console"></div>
-		
-		
+
 		<!-- شريط التحميل يعرض وقت العمل -->
 		<div class="tmpprogress progress progress-striped active work" style="display: none;">
-			  <div class="bar" style="width: 0%;"></div>
+			<div class="bar" style="width: 0%;"></div>
 		</div>
+
+		<!-- تنبيه يعرض لإخبار المستخدم بالمعلومات -->
+		<div class="tmpalert alert" style="display: none;">
+			<button type="button" class="close" >
+				&times;
+			</button>
+
+		</div>
+
+		<!-- قوائم الاكمال التلقائي -->
+		<!-- 
+			معلومات عن الدقق
+			
+			37      :       mp4     [1080x1920]
+			46      :       webm    [1080x1920]
+			22      :       mp4     [720x1280]
+			45      :       webm    [720x1280]
+			35      :       flv     [480x854]
+			44      :       webm    [480x854]
+			34      :       flv     [360x640]
+			18      :       mp4     [360x640]
+			43      :       webm    [360x640]
+			5       :       flv     [240x400]
+			17      :       mp4     [144x176]
+		-->
 		
 		
-		<!-- جاقاسكربت للنهاية ليحمل البرنامج أسرع --> 
+		<!-- جاقاسكربت للنهاية ليحمل البرنامج أسرع -->
 		<script src="assets/js/jquery.js"></script>
-		<!-- <script src="assets/js/bootstrap.js"></script> -->
+		<script src="assets/js/bootstrap.js"></script>
 		<script src="assets/js/script.js"></script>
+		<script src="assets/js/form.js"></script>
 	</body>
 </html>

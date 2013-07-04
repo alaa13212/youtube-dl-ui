@@ -7,9 +7,9 @@
   "window": {
     "icon": "/usr/share/icons/hicolor/128x128/apps/youtube-dl-ui.png",
     "toolbar": false,
-    "width": 900,
-    "height": 600,
-    "position": "mouse",
+    "width": 800,
+    "height": 500,
+    "position": "center",
     "as_desktop": false
   },
   "webkit": {

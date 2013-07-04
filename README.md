@@ -28,9 +28,15 @@ Download YouTube videos and playlists with a few clicks.
 
 ## سجل التغيير
 
+### 0.1.2 التجريبي
+
+ - أيقونة جديدة من تصميم Abdelhadi Dyouri
+ - التحميل بالسحب والافلات
+ - اختيار دقة وصيغة الفيديو
+
 ### 0.1.1 التجريبي
 
-(* - أيقونة جديدة من تصميم Abdelhadi Dyouri *)
+ - أيقونة جديدة من تصميم Abdelhadi Dyouri
 - عرض معلومات أكثر عن التحميل
 
 ### 0.1.0 التجريبي
@@ -62,6 +68,12 @@ Or by test app and send [issues][issues].
 This app under Waqf General Public License, Read more more `LICENSE` .
 
 ## Chengelog
+
+### 0.1.2 bete
+
+ - New icon by  Abdelhadi Dyouri 
+ - Download by Drag & Drop
+ - Choose Video format
 
 ### 0.1.1 Beta
 
