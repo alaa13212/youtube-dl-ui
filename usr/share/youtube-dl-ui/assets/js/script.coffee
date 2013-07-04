@@ -98,12 +98,16 @@ $(document).ready () ->
     .parent('.progress').removeClass 'active progress-striped work'
     
     dl?.kill()
+    if dl?
+       dl = null
   
   $('#parm').submit (e) ->
     e.preventDefault()
     
-    
-    return alert 'هناك عملية تحميل أخرى حاليا' if dl?
+    if dl?
+      $('#start').prop 'disabled', false
+      $('#stop').prop 'disabled', true
+      return alert 'هناك عملية تحميل أخرى حاليا'
     
     
     $('#start').prop 'disabled', true

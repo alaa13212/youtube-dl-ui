@@ -81,12 +81,19 @@
       $('#start').prop('disabled', false);
       $('#stop').prop('disabled', true);
       lastbar.addClass('bar-danger').parent('.progress').removeClass('active progress-striped work');
-      return dl != null ? dl.kill() : void 0;
+      if (dl != null) {
+        dl.kill();
+      }
+      if (dl != null) {
+        return dl = null;
+      }
     });
     return $('#parm').submit(function(e) {
       var dlFormats, path, url;
       e.preventDefault();
       if (dl != null) {
+        $('#start').prop('disabled', false);
+        $('#stop').prop('disabled', true);
         return alert('هناك عملية تحميل أخرى حاليا');
       }
       $('#start').prop('disabled', true);
