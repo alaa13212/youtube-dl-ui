@@ -25,25 +25,6 @@ $showMore = $('#show-more')
   
   this.close(true)
 
-$('#test').click (e) ->
-  if not window.dragWin?
-    window.dragWin = gui.Window.open 'drag.html',
-      {
-        toolbar: false
-        width: 60
-        height: 50
-        frame: false
-        "always-on-top": true
-        show_in_taskbar: false
-        x: 0
-        y: 130
-      }
-    
-    window.dragWin.on 'closed', () ->
-      window.dragWin = null
-    
-    window.dragWin.on 'loaded', ->
-      dragWin.window.mainWin = window.mainWin
       
   
   
@@ -153,4 +134,27 @@ $(document).ready () ->
       lastbar.parent('.progress').removeClass 'active progress-striped work'
   
   
+  $('#test').click (e) ->
+    if window.dragWin?
+      window.dragWin.close()
+    else
+      window.dragWin = gui.Window.open 'drag.html',
+        {
+          toolbar: false
+          width: 60
+          height: 50
+          frame: false
+          "always-on-top": true
+          show_in_taskbar: false
+          x: 0
+          y: 130
+        }
+      
+      window.dragWin.on 'closed', () ->
+        window.dragWin = null
+      
+      window.dragWin.on 'loaded', ->
+        dragWin.window.mainWin = window.mainWin
+      
+      window.mainWin.hide()
   

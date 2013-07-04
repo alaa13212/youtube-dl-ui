@@ -26,27 +26,6 @@
 		return this.close(true);
 	});
 
-	$('#test').click(function(e) {
-		if (window.dragWin == null) {
-			window.dragWin = gui.Window.open('drag.html', {
-				toolbar : false,
-				width : 60,
-				height : 50,
-				frame : false,
-				"always-on-top" : true,
-				show_in_taskbar : false,
-				x : 0,
-				y : 130
-			});
-			window.dragWin.on('closed', function() {
-				return window.dragWin = null;
-			});
-			return window.dragWin.on('loaded', function() {
-				return dragWin.window.mainWin = window.mainWin;
-			});
-		}
-	});
-
 	consoleLog = function(data, dir) {
 		var ep, p;
 		if (dir == null) {
@@ -89,7 +68,7 @@
 				return dl = null;
 			}
 		});
-		return $('#parm').submit(function(e) {
+		$('#parm').submit(function(e) {
 			var dlFormats, path, url;
 			e.preventDefault();
 			if (dl != null) {
@@ -145,6 +124,29 @@
 				}
 				return lastbar.parent('.progress').removeClass('active progress-striped work');
 			});
+		});
+		return $('#test').click(function(e) {
+			if (window.dragWin != null) {
+				return window.dragWin.close();
+			} else {
+				window.dragWin = gui.Window.open('drag.html', {
+					toolbar : false,
+					width : 60,
+					height : 50,
+					frame : false,
+					"always-on-top" : true,
+					show_in_taskbar : false,
+					x : 0,
+					y : 130
+				});
+				window.dragWin.on('closed', function() {
+					return window.dragWin = null;
+				});
+				window.dragWin.on('loaded', function() {
+					return dragWin.window.mainWin = window.mainWin;
+				});
+				return window.mainWin.hide();
+			}
 		});
 	});
 
