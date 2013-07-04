@@ -12,8 +12,10 @@ drop = (e)->
   if data.files.length isnt 0
     alert 'دعم الملفات قريبا'
   else if (uri = data.getData('text/uri-list')) isnt ''
+    window.mainWin.show()
     mw.$('#url').val uri
     mw.$('#parm').submit()
+    window.dragWin.close()
   else
     alert 'ﻻ أعرف مالذي أفلت تواصل مع المطور لحل  المشكلة'
       

@@ -1,18 +1,19 @@
 {
-  "main": "index.html",
-  "name": "youtube-dl-ui",
-  "description": "واجهة مستخدم رسومية لبرنامج youtube-dl",
-  "version": "0.1.0",
-  "keywords": [ "youtube-dl", "GUI" ],
-  "window": {
-    "icon": "/usr/share/icons/hicolor/128x128/apps/youtube-dl-ui.png",
-    "toolbar": false,
-    "width": 800,
-    "height": 500,
-    "position": "center",
-    "as_desktop": false
-  },
-  "webkit": {
-    "plugin": true
-  }
+	"main": "index.html",
+	"name": "youtube-dl-ui",
+	"description": "واجهة مستخدم رسومية لبرنامج youtube-dl",
+	"version": "0.1.2",
+	"keywords": ["youtube-dl", "GUI"],
+	"window": {
+		"icon": "/usr/share/icons/hicolor/128x128/apps/youtube-dl-ui.png",
+		"toolbar": true,
+		"width": 800,
+		"height": 500,
+		"position": "center",
+		"as_desktop": false,
+		"show_in_taskbar": false
+	},
+	"webkit": {
+		"plugin": true
+	}
 }

@@ -94,19 +94,16 @@ $(document).ready () ->
     $('#start').prop 'disabled', false
     $('#stop').prop 'disabled', true
     
-    lastbar.addClass('bar-danger')
+    lastbar?.addClass('bar-danger')
     .parent('.progress').removeClass 'active progress-striped work'
     
     dl?.kill()
-    if dl?
-       dl = null
+    if dl? then dl = null
   
   $('#parm').submit (e) ->
     e.preventDefault()
     
     if dl?
-      $('#start').prop 'disabled', false
-      $('#stop').prop 'disabled', true
       return alert 'هناك عملية تحميل أخرى حاليا'
     
     
