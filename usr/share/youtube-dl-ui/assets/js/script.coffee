@@ -116,7 +116,7 @@ $(document).ready () ->
       
       if not lastbar?
         alert 'خطأ مجهول' 
-        consoleLog 'حدث خطأ مجهول تواصل معي على <a href="mailto:alaa13212@gmail.com"', 'rtl'
+        consoleLog 'حدث خطأ مجهول تواصل معي على <a href="mailto:alaa13212@gmail.com">alaa13212@gmail.com</a>', 'rtl'
         return true
       
       if code is 0

@@ -18,7 +18,7 @@
 		function Process(process, stream) {
 			this.process = process;
 			this.stream = stream;
-			this.process.stdout.stream = this.process.stderr.stream = this.stream;
+			this.process.stream = this.process.stdout.stream = this.process.stderr.stream = this.stream;
 		}
 
 
