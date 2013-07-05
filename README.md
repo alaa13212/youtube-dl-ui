@@ -28,6 +28,10 @@ Download YouTube videos and playlists with a few clicks.
 
 ## سجل التغيير
 
+### 0.2.0 التجريبي
+
+ - تحمل جميع الروابط في ملف
+
 ### 0.1.2 التجريبي
 
  - أيقونة جديدة من تصميم Abdelhadi Dyouri
@@ -69,6 +73,10 @@ This app under Waqf General Public License, Read more more `LICENSE` .
 
 ## Chengelog
 
+### 0.2.0
+
+ - Download all URLs in file
+
 ### 0.1.2 bete
 
  - New icon by  Abdelhadi Dyouri 
@@ -77,15 +85,15 @@ This app under Waqf General Public License, Read more more `LICENSE` .
 
 ### 0.1.1 Beta
 
-- New icon by  Abdelhadi Dyouri 
-- Display more info from `youtube-dl` output
+ - New icon by  Abdelhadi Dyouri 
+ - Display more info from `youtube-dl` output
 
 
 ### 0.1.0 Beta
 
-- Download YouTube videos and playlists via url
-- Display progress bars, and resuming downloads
-- Select sava path
+ - Download YouTube videos and playlists via url
+ - Display progress bars, and resuming downloads
+ - Select sava path
 
 
 
