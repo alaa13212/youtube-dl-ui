@@ -19,7 +19,7 @@ vidInfo = /(\d+\.\d%) of (\d+\.\d+\w+) at\s+([^\s]+) ETA ((\d|-)+:(\d|-)+)/
 
 class Process 
   constructor: (@process, @stream) ->
-    @process.stdout.stream = @process.stderr.stream = @stream
+    @process.stream = @process.stdout.stream = @process.stderr.stream = @stream
   
   on: (type, callback) ->
     @stream.on(type, callback)
@@ -38,13 +38,14 @@ module.exports.download = (url, dest=process.cwd(), args=[]) ->
   dargs = ['-t'];
   for arg in args
     if dargs.indexOf(arg) is -1 then dargs.push arg
-  dargs.push(url)
+  dargs = dargs.concat(url.split(' '))
   process = spawn( 'youtube-dl', dargs, {cwd: dest} )
   download = new Process(process, new EventEmitter())
   download.process.stdout.setEncoding 'utf8'
   download.process.stdout.on 'data', getInfo
   download.process.stderr.setEncoding 'utf8'
   download.process.stderr.on 'data', (err) -> @stream.emit 'stderror', err
+  download.process.on 'exit', (code) -> @stream.emit 'close', code
   
   
   return download
@@ -56,6 +57,7 @@ module.exports.formats =  (url) ->
   
   formats.process.stdout.setEncoding 'utf8'
   formats.process.stdout.on 'data', getFormats
+  formats.process.on 'exit', (code) -> @stream.emit 'close', code
   
   
   return formats

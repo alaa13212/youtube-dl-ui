@@ -25,10 +25,6 @@ $showMore = $('#show-more')
   
   this.close(true)
 
-      
-  
-  
-
 
 consoleLog = (data, dir="ltr") ->
   p  = "<p class=\"#{dir}\">"
@@ -60,7 +56,7 @@ $(document).ready () ->
   $('#path-text').val home
 
   $('#path').change () ->
-    $('#path-text').val $(@).val()? || $('#path-text').val()? || home
+    $('#path-text').val $(@).val() || $('#path-text').val() || home
     
   .prop('nwworkingdir', home)
   
@@ -96,7 +92,7 @@ $(document).ready () ->
     path = $('#path-text').val() || home
     
     dlFormats = getFormats()
-    if $showMore.is('.active') and dlFormats isnt 0
+    if $showMore.is('.active') and dlFormats.length isnt 0
       dl = youtubedl.download(url, path, [
           '-f', dlFormats.join('/')
         ])
@@ -106,10 +102,10 @@ $(document).ready () ->
     dl.on 'log',      (d) -> consoleLog d
     dl.on 'palylist', (p) -> alertBox 'بدأ تحميل قائمة التشغيل', "#{p.name}، #{p.length} من الفيديوهات"
     dl.on 'start-vid',(v) -> lastbar = progressBar v.name
-    dl.on 'exec-vid', (v) -> alertBox "الفيديو #{v.name} موجود بالفعل", '', 'alert-success'
+    dl.on 'exec-vid', (v) -> alertBox "الفيديو #{v.name} موجود بالفعل", '', 'success'
     dl.on 'download', (v) -> 
       lastbar?.width v.complete
-      consoleLog "السرعة: #{v.speed}, الوقت المتبقي: #{v.time}", 'rtl'
+      consoleLog "السرعة: #{v.speed}، الوقت المتبقي: #{v.time}", 'rtl'
     dl.on 'end-vid',  (v) -> 
       lastbar?.width('100%')
       .addClass('bar-success')
@@ -117,18 +113,19 @@ $(document).ready () ->
     dl.on 'close', (code) ->
       $('#start').prop 'disabled', false
       $('#stop').prop 'disabled', true
-      if (!(lastbar?))
+      
+      if not lastbar?
         alert 'خطأ مجهول' 
         consoleLog 'حدث خطأ مجهول تواصل معي على <a href="mailto:alaa13212@gmail.com"', 'rtl'
         return true
       
-      if (code is 0)
+      if code is 0
         #alert('تم التحميل بنجاح')
         lastbar.addClass 'bar-success'
         consoleLog 'تم التحميل بنجاح', 'rtl'
       else
         lastbar.addClass 'bar-danger'
-        alertBox 'فشل التحميل', 'التحميل توقف بشكل مفاجئ، قد يكون فشل الرجاء التأكد من سلامة الملفات', 'alert-danger'
+        alertBox 'فشل التحميل', 'التحميل توقف بشكل مفاجئ، قد يكون فشل الرجاء التأكد من سلامة الملفات', 'danger'
         consoleLog 'التحميل توقف بشكل مفاجئ، قد يكون فشل الرجاء التأكد من سلامة الملفات', 'rtl'
       
       lastbar.parent('.progress').removeClass 'active progress-striped work'
@@ -141,6 +138,7 @@ $(document).ready () ->
       window.dragWin = gui.Window.open 'drag.html',
         {
           toolbar: false
+          icon: "/usr/share/icons/hicolor/128x128/apps/youtube-dl-ui.png"
           width: 60
           height: 50
           frame: false
@@ -152,6 +150,7 @@ $(document).ready () ->
       
       window.dragWin.on 'closed', () ->
         window.dragWin = null
+        window.mainWin?.show()
       
       window.dragWin.on 'loaded', ->
         dragWin.window.mainWin = window.mainWin

@@ -47,7 +47,7 @@
 	$(document).ready(function() {
 		$('#path-text').val(home);
 		$('#path').change(function() {
-			return $('#path-text').val(($(this).val() != null) || ($('#path-text').val() != null) || home);
+			return $('#path-text').val($(this).val() || $('#path-text').val() || home);
 		}).prop('nwworkingdir', home);
 		$('#path-btn').click(function() {
 			return $('#path').click();
@@ -79,7 +79,7 @@
 			url = $('#url').val();
 			path = $('#path-text').val() || home;
 			dlFormats = getFormats();
-			if ($showMore.is('.active') && dlFormats !== 0) {
+			if ($showMore.is('.active') && dlFormats.length !== 0) {
 				dl = youtubedl.download(url, path, ['-f', dlFormats.join('/')]);
 			} else {
 				dl = youtubedl.download(url, path);
@@ -94,13 +94,13 @@
 				return lastbar = progressBar(v.name);
 			});
 			dl.on('exec-vid', function(v) {
-				return alertBox("الفيديو " + v.name + " موجود بالفعل", '', 'alert-success');
+				return alertBox("الفيديو " + v.name + " موجود بالفعل", '', 'success');
 			});
 			dl.on('download', function(v) {
 				if (lastbar != null) {
 					lastbar.width(v.complete);
 				}
-				return consoleLog("السرعة: " + v.speed + ", الوقت المتبقي: " + v.time, 'rtl');
+				return consoleLog("السرعة: " + v.speed + "، الوقت المتبقي: " + v.time, 'rtl');
 			});
 			dl.on('end-vid', function(v) {
 				return lastbar != null ? lastbar.width('100%').addClass('bar-success').parent('.progress').removeClass('active progress-striped work') :
@@ -109,7 +109,7 @@
 			return dl.on('close', function(code) {
 				$('#start').prop('disabled', false);
 				$('#stop').prop('disabled', true);
-				if (!(lastbar != null)) {
+				if (lastbar == null) {
 					alert('خطأ مجهول');
 					consoleLog('حدث خطأ مجهول تواصل معي على <a href="mailto:alaa13212@gmail.com"', 'rtl');
 					return true;
@@ -119,7 +119,7 @@
 					consoleLog('تم التحميل بنجاح', 'rtl');
 				} else {
 					lastbar.addClass('bar-danger');
-					alertBox('فشل التحميل', 'التحميل توقف بشكل مفاجئ، قد يكون فشل الرجاء التأكد من سلامة الملفات', 'alert-danger');
+					alertBox('فشل التحميل', 'التحميل توقف بشكل مفاجئ، قد يكون فشل الرجاء التأكد من سلامة الملفات', 'danger');
 					consoleLog('التحميل توقف بشكل مفاجئ، قد يكون فشل الرجاء التأكد من سلامة الملفات', 'rtl');
 				}
 				return lastbar.parent('.progress').removeClass('active progress-striped work');
@@ -131,6 +131,7 @@
 			} else {
 				window.dragWin = gui.Window.open('drag.html', {
 					toolbar : false,
+					icon : "/usr/share/icons/hicolor/128x128/apps/youtube-dl-ui.png",
 					width : 60,
 					height : 50,
 					frame : false,
@@ -140,7 +141,10 @@
 					y : 130
 				});
 				window.dragWin.on('closed', function() {
-					return window.dragWin = null;
+					var _ref;
+					window.dragWin = null;
+					return ( _ref = window.mainWin) != null ? _ref.show() :
+					void 0;
 				});
 				window.dragWin.on('loaded', function() {
 					return dragWin.window.mainWin = window.mainWin;

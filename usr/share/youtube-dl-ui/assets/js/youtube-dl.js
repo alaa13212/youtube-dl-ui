@@ -57,7 +57,7 @@
 				dargs.push(arg);
 			}
 		}
-		dargs.push(url);
+		dargs = dargs.concat(url.split(' '));
 		process = spawn('youtube-dl', dargs, {
 			cwd : dest
 		});
@@ -68,6 +68,9 @@
 		download.process.stderr.on('data', function(err) {
 			return this.stream.emit('stderror', err);
 		});
+		download.process.on('exit', function(code) {
+			return this.stream.emit('close', code);
+		});
 		return download;
 	};
 
@@ -77,6 +80,9 @@
 		formats = new Process(process, new EventEmitter());
 		formats.process.stdout.setEncoding('utf8');
 		formats.process.stdout.on('data', getFormats);
+		formats.process.on('exit', function(code) {
+			return this.stream.emit('close', code);
+		});
 		return formats;
 	};
 
